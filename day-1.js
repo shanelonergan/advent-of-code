@@ -116,7 +116,7 @@ const fuelArr = input.map(inputValue => calculateFuel(inputValue))
 const totalFuel = fuelArr.reduce((sum, currentValue) => sum + currentValue, 0)
 
 // Solution is working
-console.log(totalFuel)
+console.log(totalFuel, 'total fuel')
 
 // PART 2
 
@@ -138,7 +138,8 @@ const fuelForFuel = (totalFuel) => {
      }
    }
 }
-const test = totalFuel(100756)
-console.log(test)
-fuelForFuel(test)
-// fuelForFuel(totalFuel)
+const test = calculateFuel(100756)
+console.log(test, 'test')
+// fuelForFuel(test)
+fuelForFuel(totalFuel)
+// wrong: 4931387, too high
