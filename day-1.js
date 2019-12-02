@@ -119,27 +119,37 @@ const totalFuel = fuelArr.reduce((sum, currentValue) => sum + currentValue, 0)
 console.log(totalFuel, 'total fuel')
 
 // PART 2
+const totalMass = input.reduce((sum, currentValue) => sum + currentValue, 0)
 
-const fuelForFuel = (totalFuel) => {
-  let fuelIncludingFuel = totalFuel
-  let remainingFuel = totalFuel
+const fuelForFuel = (totalMass) => {
+  let fuelIncludingFuel = totalMass
+  let remainingFuel = totalMass
 
    set = false
    while (set !== true) {
      if (calculateFuel(remainingFuel) <= 0) {
-       console.log(fuelIncludingFuel, 'solution')
        set = true
+       console.log(fuelIncludingFuel, 'solution')
+       return fuelIncludingFuel
      } else {
        fuel = calculateFuel(remainingFuel)
        remainingFuel = fuel
-       console.log(remainingFuel, 'remainingFuel')
+      //  console.log(remainingFuel, 'remainingFuel')
        fuelIncludingFuel += fuel
-       console.log(fuelIncludingFuel, 'fuelIncludingFuel')
+      //  console.log(fuelIncludingFuel, 'fuelIncludingFuel')
      }
    }
 }
+const testArr = [100756, 1969]
 const test = calculateFuel(100756)
-console.log(test, 'test')
-// fuelForFuel(test)
-fuelForFuel(totalFuel)
-// wrong: 4931387, too high
+fuelForFuel(test)
+
+const correctedFuelArr = testArr.map(inputValue => fuelForFuel(inputValue))
+console.table(correctedFuelArr)
+const correctedTotalFuel = correctedFuelArr.reduce((sum, currentValue) => sum + currentValue, 0)
+
+console.log(correctedTotalFuel, 'solution')
+
+// incorrect answers:
+//
+// 3287620
