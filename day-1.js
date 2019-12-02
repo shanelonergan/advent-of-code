@@ -134,24 +134,24 @@ const fuelForFuel = (totalMass) => {
      } else {
        fuel = calculateFuel(remainingFuel)
        remainingFuel = fuel
-      //  console.log(remainingFuel, 'remainingFuel')
        fuelIncludingFuel += fuel
-      //  console.log(fuelIncludingFuel, 'fuelIncludingFuel')
      }
    }
 }
-const testArr = [100756, 1969]
-// const test = calculateFuel(100756)
-// fuelForFuel(test)
 
-const correctedFuelArr = testArr.map(inputValue => calculateFuel(inputValue))
-// console.table(correctedFuelArr)
+const correctedFuelArr = input.map(inputValue => calculateFuel(inputValue))
+const totalFuelTest = correctedFuelArr.reduce((sum, currentValue) => sum + currentValue, 0)
+console.log(totalFuelTest, 'total fuel')
 const fuelPlusFuelArr = correctedFuelArr.map(inputValue => fuelForFuel(inputValue))
 console.table(fuelPlusFuelArr)
 const correctedTotalFuel = fuelPlusFuelArr.reduce((sum, currentValue) => sum + currentValue, 0)
 
-console.log(correctedTotalFuel, 'correctedFuelTotal')
+// Solution is working
+console.log(correctedTotalFuel, 'correctedFuelTotal') // 4928567
 
 // incorrect answers:
 //
 // 3287620
+// 1643767 too low
+// 4931387 too high
+
