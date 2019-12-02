@@ -141,14 +141,16 @@ const fuelForFuel = (totalMass) => {
    }
 }
 const testArr = [100756, 1969]
-const test = calculateFuel(100756)
-fuelForFuel(test)
+// const test = calculateFuel(100756)
+// fuelForFuel(test)
 
-const correctedFuelArr = testArr.map(inputValue => fuelForFuel(inputValue))
-console.table(correctedFuelArr)
-const correctedTotalFuel = correctedFuelArr.reduce((sum, currentValue) => sum + currentValue, 0)
+const correctedFuelArr = testArr.map(inputValue => calculateFuel(inputValue))
+// console.table(correctedFuelArr)
+const fuelPlusFuelArr = correctedFuelArr.map(inputValue => fuelForFuel(inputValue))
+console.table(fuelPlusFuelArr)
+const correctedTotalFuel = fuelPlusFuelArr.reduce((sum, currentValue) => sum + currentValue, 0)
 
-console.log(correctedTotalFuel, 'solution')
+console.log(correctedTotalFuel, 'correctedFuelTotal')
 
 // incorrect answers:
 //
