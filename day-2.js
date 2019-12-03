@@ -1,6 +1,6 @@
 // PART ONE
 
-const input = [
+let input = [
     1,
     0,
     0,
@@ -168,43 +168,46 @@ const input = [
     0
 ];
 
-const example1 = [
-    1,1,1,4,99,5,6,0,99
-]
+let example1 = [1, 1, 1, 4, 99, 5, 6, 0, 99];
 
-let counter = 0;
+const testArr = arr => {
+    console.log(example1);
+    let counter = 0;
 
-for (let [index, element] of example1.entries()) {
+    for (let [index, element] of arr.entries()) {
+        let output;
 
-    let output
+        console.log(counter, 'counter');
+        console.log(arr);
 
-    console.log(counter, 'counter')
-
-    switch (element) {
-        case 1:
-            output = input[counter + 1] + input[counter + 2];
-            console.log('add', element, output)
-            input[input[counter + 3]] = output;
-            counter += 5;
+        switch (element) {
+            case 1:
+                // debugger
+                output = arr[arr[counter + 1]] + arr[arr[counter + 2]];
+                console.log('add', element, output);
+                arr[arr[counter + 3]] = output;
+                counter += 4;
+                break;
+            case 2:
+                output = arr[arr[counter + 1]] * arr[arr[counter + 2]];
+                console.log('multiply', element, output);
+                arr[arr[counter + 3]] = output;
+                counter += 4;
+                break;
+            case 99:
+                console.log('break');
+                break;
+            default:
+                console.log(element);
+        }
+        if (element === 99) {
+            counter = 0;
             break;
-        case 2:
-            output = input[counter + 1] * input[counter + 2];
-            console.log('multiply', element, output)
-            input[input[counter + 3]] = output;
-            counter += 5;
-            break;
-        case 99:
-            console.log('break')
-            break
-        default:
-            console.log(element)
-    }
-    if (element === 99) {
-        counter = 0
-        break
+        }
     }
 };
 
-console.log(example1);
+testArr(example1);
+console.log(example1.finished);
 
 // wrong: 1
