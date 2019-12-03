@@ -168,21 +168,30 @@ const input = [
     0
 ];
 
+const example1 = [
+    1,1,1,4,99,5,6,0,99
+]
+
 let counter = 0;
 
-for (let element of input) {
+for (let [index, element] of example1.entries()) {
+
     let output
+
+    console.log(counter, 'counter')
 
     switch (element) {
         case 1:
-            console.log('add', element)
             output = input[counter + 1] + input[counter + 2];
+            console.log('add', element, output)
             input[input[counter + 3]] = output;
+            counter += 5;
             break;
         case 2:
-            console.log('multiply', element)
             output = input[counter + 1] * input[counter + 2];
+            console.log('multiply', element, output)
             input[input[counter + 3]] = output;
+            counter += 5;
             break;
         case 99:
             console.log('break')
@@ -190,8 +199,12 @@ for (let element of input) {
         default:
             console.log(element)
     }
-
-    counter += 5;
+    if (element === 99) {
+        counter = 0
+        break
+    }
 };
 
-console.log(input);
+console.log(example1);
+
+// wrong: 1
