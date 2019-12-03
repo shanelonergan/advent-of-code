@@ -57,11 +57,11 @@ const testArr = arr => {
     while (input[position] !== 99) {
         const [op, num1Position, num2Position, outputPosition] = input.slice(position, position + 4)
         const num1 = input[num1Position]
-        const num1 = input[num2Position]
+        const num2 = input[num2Position]
 
         input[outputPosition] = op === 1 ? num1 + num2 : num1 * num2
 
-        pos += 4
+        position += 4
     }
 
     console.log(input[0], 'solution')
