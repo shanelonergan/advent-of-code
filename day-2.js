@@ -1,6 +1,6 @@
 // PART ONE
 
-input = [
+const input = [
     1,
     0,
     0,
@@ -170,25 +170,28 @@ input = [
 
 let counter = 0;
 
-input.forEach(integer, index => {
+for (let element of input) {
     let output
 
-    switch (integer) {
+    switch (element) {
         case 1:
+            console.log('add', element)
             output = input[counter + 1] + input[counter + 2];
             input[input[counter + 3]] = output;
             break;
         case 2:
-            output = input[counter + 1] + input[counter + 2];
+            console.log('multiply', element)
+            output = input[counter + 1] * input[counter + 2];
             input[input[counter + 3]] = output;
             break;
         case 99:
+            console.log('break')
             break
         default:
-            throw 'staaaahp'
+            console.log(element)
     }
 
-    counter += 4;
-});
+    counter += 5;
+};
 
 console.log(input);
