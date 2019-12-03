@@ -1,26 +1,11 @@
 // PART ONE
 
 let input = [
-    1,
-    0,
-    0,
-    3,
-    1,
-    1,
-    2,
-    3,
-    1,
-    3,
-    4,
-    3,
-    1,
-    5,
-    0,
-    3,
-    2,
-    1,
-    10,
-    19,
+    1, 12, 2, 3,
+    1, 1, 2, 3,
+    1, 3, 4, 3,
+    1, 5, 0, 3,
+    2, 1, 10, 19,
     1,
     19,
     5,
@@ -168,7 +153,9 @@ let input = [
     0
 ];
 
-let example1 = [1, 1, 1, 4, 99, 5, 6, 0, 99];
+let example1 = [1, 1, 1, 4, 99, 5, 6, 0, 99]; // passing
+let example2 = [2, 4, 4, 5, 99, 0]; // passing
+let example3 = [2, 3, 0, 3, 99]; // passing
 
 const testArr = arr => {
     console.log(example1);
@@ -176,30 +163,37 @@ const testArr = arr => {
 
     for (let [index, element] of arr.entries()) {
         let output;
+        let indexToReplace
 
         console.log(counter, 'counter');
         console.log(arr);
-
-        switch (element) {
-            case 1:
-                // debugger
-                output = arr[arr[counter + 1]] + arr[arr[counter + 2]];
-                console.log('add', element, output);
-                arr[arr[counter + 3]] = output;
-                counter += 4;
-                break;
-            case 2:
-                output = arr[arr[counter + 1]] * arr[arr[counter + 2]];
-                console.log('multiply', element, output);
-                arr[arr[counter + 3]] = output;
-                counter += 4;
-                break;
-            case 99:
-                console.log('break');
-                break;
-            default:
-                console.log(element);
+        if (index % 4 === 0) {
+            switch (element) {
+                case 1:
+                    // debugger
+                    output = arr[arr[counter + 1]] + arr[arr[counter + 2]];
+                    console.log('add', element, output);
+                    indexToReplace = arr[arr[counter + 3]]
+                    console.log(indexToReplace, 'index to replace')
+                    arr[arr[counter + 3]] = output
+                    counter += 4;
+                    break;
+                case 2:
+                    output = arr[arr[counter + 1]] * arr[arr[counter + 2]];
+                    console.log('multiply', element, output);
+                    indexToReplace = arr[arr[counter + 3]]
+                    console.log(indexToReplace, 'index to replace')
+                    arr[arr[counter + 3]] = output
+                    counter += 4;
+                    break;
+                case 99:
+                    console.log('break');
+                    break;
+                default:
+                    console.log(element);
+            }
         }
+
         if (element === 99) {
             counter = 0;
             break;
@@ -207,7 +201,7 @@ const testArr = arr => {
     }
 };
 
-testArr(example1);
-console.log(example1.finished);
+testArr(input);
+console.log(input, 'finished');
 
-// wrong: 1
+// wrong: 1, 12
